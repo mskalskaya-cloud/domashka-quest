@@ -172,7 +172,7 @@ h2{font-size:clamp(22px,6vw,28px);line-height:1.25;margin-top:26px}
     var W = 320, pad = 20;
     function x(v) { return pad + (v - min) / (max - min) * (W - 2 * pad); }
 
-    var svg = '<svg class="nl" viewBox="0 0 ' + W + ' 120" role="img" aria-label="Числовая прямая от ' + start + ' до ' + pts[pts.length - 1] + '">';
+    var svg = '<svg class="nl" viewBox="0 0 ' + W + ' 120" role="img" aria-label="Числовая прямая от ' + start + ' до ' + 'с шагами' + '">';
     svg += '<line x1="' + x(min) + '" y1="80" x2="' + x(max) + '" y2="80" stroke="#4cc3ff" stroke-width="2"/>';
     for (var v = min; v <= max; v += 10) {
       svg += '<line x1="' + x(v) + '" y1="74" x2="' + x(v) + '" y2="86" stroke="#4cc3ff" stroke-width="2"/>';
@@ -189,7 +189,7 @@ h2{font-size:clamp(22px,6vw,28px);line-height:1.25;margin-top:26px}
     for (var p = 0; p < pts.length; p++) {
       var above = p % 2 === 0;
       svg += '<circle cx="' + x(pts[p]) + '" cy="80" r="4" fill="' + (p === 0 ? '#4cc3ff' : '#ffc94d') + '"/>';
-      svg += '<text x="' + x(pts[p]) + '" y="' + (above ? 66 : 96) + '" text-anchor="middle" fill="' + (p === 0 ? '#4cc3ff' : '#ffc94d') + '" font-size="12" font-weight="700">' + pts[p] + '</text>';
+      svg += '<text x="' + x(pts[p]) + '" y="' + (above ? 66 : 96) + '" text-anchor="middle" fill="' + (p === 0 ? '#4cc3ff' : '#ffc94d') + '" font-size="12" font-weight="700">' + (p === pts.length - 1 ? '?' : pts[p]) + '</text>';
     }
     svg += '</svg>';
     return svg;
@@ -222,7 +222,7 @@ h2{font-size:clamp(22px,6vw,28px);line-height:1.25;margin-top:26px}
           hints: [
             'Давай разложим 18 на удобные части. Сколько в нём десятков и единиц?',
             'Сначала прибавь 10 к 24. Какое число получилось?',
-            'Теперь к полученному числу прибавь ещё 8.'
+            'Посмотри, сколько единиц осталось прибавить из 18. Сложи их с результатом предыдущего шага.'
           ],
           visualAt: 2,
           visual: function () { return drawNumberLine(24, [10, 8]); },
@@ -233,7 +233,7 @@ h2{font-size:clamp(22px,6vw,28px);line-height:1.25;margin-top:26px}
           hints: [
             'Разложим 27 на части. Сколько в нём десятков и сколько единиц?',
             'Сначала прибавь 20 к 35. Какое число получилось?',
-            'Теперь к полученному числу прибавь ещё 7.'
+            'Посмотри, сколько единиц осталось прибавить из 27. Сложи их с результатом предыдущего шага.'
           ],
           visualAt: 2,
           visual: function () { return drawNumberLine(35, [20, 7]); },
@@ -251,7 +251,7 @@ h2{font-size:clamp(22px,6vw,28px);line-height:1.25;margin-top:26px}
           hints: [
             'Какое круглое число находится рядом с 19?',
             'Попробуй сначала вычесть 20. Сколько получится?',
-            'Мы вычли на 1 больше, чем нужно. Как исправить результат?'
+            'Сравни результат с исходным примером. На сколько ты вычел лишнего и что нужно сделать, чтобы исправить?'
           ],
           visualAt: 2,
           visual: function () { return drawNumberLine(52, [-20, 1]); },
@@ -269,7 +269,7 @@ h2{font-size:clamp(22px,6vw,28px);line-height:1.25;margin-top:26px}
           hints: [
             'Представь 6 групп, в каждой по 7 звёзд. Как узнать, сколько звёзд всего?',
             'Можно представить 6 групп как 5 групп и ещё 1 группу.',
-            'Вычисли 5 × 7, затем прибавь ещё 7.'
+            'Найди, сколько звёзд в 5 группах. Потом добавь звёзды из последней группы.'
           ],
           visualAt: 1,
           visual: function () {
